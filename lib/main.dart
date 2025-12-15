@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: startOnHome ? DashboartPage() : LoginPage(),
+      home: startOnHome ? DashboardPage() : LoginPage(),
     );
   }
 }

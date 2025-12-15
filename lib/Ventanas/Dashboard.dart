@@ -1,13 +1,13 @@
 import 'package:app_gui_mascotas/Ventanas/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-class DashboartPage extends StatefulWidget {
+class DashboardPage extends StatefulWidget {
 
   @override
-  State<DashboartPage> createState() => _DashboartPageState();
+  State<DashboardPage> createState() => _DashboardPageState();
 }
 
-class _DashboartPageState extends State<DashboartPage> {
+class _DashboardPageState extends State<DashboardPage> {
   final storage=FlutterSecureStorage();
   String? token;
   Future<void> validarToken() async {

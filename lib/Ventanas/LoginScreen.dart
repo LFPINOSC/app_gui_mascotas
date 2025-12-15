@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         await storage.write(key: 'token', value: token);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => DashboartPage()),
+          MaterialPageRoute(builder: (_) => DashboardPage()),
         );
       } else {
         _mostrarError("Usuario o contraseña incorrectos");
