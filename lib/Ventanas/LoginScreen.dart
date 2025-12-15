@@ -1,4 +1,5 @@
 import 'package:app_gui_mascotas/Servicios/ServicioLogin.dart';
+import 'package:app_gui_mascotas/Ventanas/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -23,6 +24,15 @@ class _LoginPageState extends State<LoginPage> {
         _usernameController.text,
         _passwordController.text,
       );
+      if (token != null && token.isNotEmpty) {
+        await storage.write(key: 'token', value: token);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => DashboartPage()),
+        );
+      } else {
+        _mostrarError("Usuario o contraseña incorrectos");
+      }
       await storage.write(key: 'token', value: token);
     } catch (e) {
       print('Error al iniciar sesión: $e');
@@ -32,6 +42,22 @@ class _LoginPageState extends State<LoginPage> {
       });
     }
   }
+  void _mostrarError(String mensaje) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Error"),
+        content: Text(mensaje),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("OK"),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

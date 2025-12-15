@@ -30,6 +30,27 @@ class _DashboartPageState extends State<DashboartPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dashboard'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              await storage.delete(key: 'token');
+              Navigator.pushReplacement(
+                context, 
+                MaterialPageRoute(builder: (_) => LoginPage()),
+              );
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: token == null
+            ? CircularProgressIndicator()
+            : Text('Token: $token'),
+      ),
+    );
   }
 }
